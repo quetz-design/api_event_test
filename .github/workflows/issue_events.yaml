@@ -8,3 +8,18 @@ jobs:
     steps:
       - run: echo "new issue event triggered!!"
 
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Collect data
+        run: |
+          echo "TIMESTAMP=$(date --utc +%FT%T%Z)" >> $GITHUB_ENV
+
+      - name: Write to DWH
+        uses: Staffbase/bigquery-github-action@v1.0.1
+        with:
+          credentials_json: ${{ secrets.BQ_SERVICE_ACCOUNT_KEY }}
+          bigquery_project: monolithworks-140105
+          bigquery_dataset: test_dataset
+          bigquery_table: github_action_test
+          payload_json: '{ "property": "${{ env.TIMESTAMP }} this is a test"}'

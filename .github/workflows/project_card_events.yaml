@@ -1,4 +1,4 @@
-name: issue-events
+name: project-card-events
 on:
   project_card:
     types: [created,deleted,moved,edited]
