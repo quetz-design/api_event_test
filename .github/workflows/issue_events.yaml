@@ -1,9 +1,11 @@
 name: issue-events
 on:
   issues:
-    types: [opened, edited,deleted,closed,reopened,assignedunassigned,labeled,unlabeled]
+    types: [opened,edited,deleted,closed,reopened,assignedunassigned,labeled,unlabeled]
   project_card:
-    types: [created, deleted,moved,edited]
+    types: [created,deleted,moved,edited]
+  project_column:
+    types: [created,updated,moved,deleted]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
