@@ -1,0 +1,10 @@
+name: issue-events
+on:
+  project_card:
+    types: [created,deleted,moved,edited]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "new project event triggered!!"
+
